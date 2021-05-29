@@ -1,3 +1,7 @@
+<form action='/search' method='POST'>
+    <p>Search: <input type='text' name='item_search'/></p>
+</form>
+{% for i in inv %}
 <table>
     <tr>
         <th>ID</th>
@@ -15,6 +19,12 @@
         <td>{{i.item_description}}</td>
         <td>{{i.location}}</td>
         <td>{{i.location_description}}</td>
+        <td>
+            <form action='/update2' method="POST">
+                <button name="update" type="submit" value="{{i.id}}">Update</button>
+            </form>
+        </td>
     </tr>
     {% endfor %}
 </table>
+{% endfor %}
