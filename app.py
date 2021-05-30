@@ -8,15 +8,22 @@ import sqlalchemy as sqla
 
 PASSWORD = os.environ['PGPASSWORD']
 USERNAME = os.environ['PGUSER']
+DBNAME = os.environ['DBNAME']
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://{USERNAME}:{PASSWORD}@localhost:5432/dev"
+db_uri = f"postgresql://{USERNAME}:{PASSWORD}@localhost:5432/{DBNAME}"
+app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 migrate = Migrate(app, db)
-engine = sqla.create_engine(f"postgresql://{USERNAME}:{PASSWORD}@localhost:5432/dev")
+
+with app.app_context():
+    db.create_all()
+
+
+engine = sqla.create_engine(db_uri)
 connection = engine.connect()
 metadata = sqla.MetaData()
 inventory = sqla.Table('inventory', metadata, autoload=True, autoload_with=engine)
