@@ -1,4 +1,4 @@
-<form action='/make_update' method = "POST">
+<!-- <form action='/make_update' method = "POST">
 	<p>ID <input type="integer" name="id" value="{{inv.id}}"/></p>
 	<p>Item Name <input type="text" name="item_name" value="{{inv.item_name}}"/></p>
 	<p>Quantity <input type="integer" name="quantity" value="{{inv.quantity}}"/></p>
@@ -6,4 +6,56 @@
 	<p>Location <input type="text" name="location" value="{{inv.location}}"/></p>
 	<p>Location Description <input type="text" name="location_desc" value="{{inv.location_description}}"/></p>
 	<p><input type="submit" value="Submit" /></p>
-</form>
+</form> -->
+
+<!DOCTYPE html>
+  <html>
+    <head>
+      
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+      
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<div class="row">
+		<form class="col s12" action='/make_update' method = "POST">
+			<div class="row">
+				<div class="input-field col s6">
+				<input placeholder="Placeholder" id="item_name" name="item_name" type="text" class="validate" value="{{inv.item_name}}">
+				<label for="item_name">Item Name</label>
+				</div>
+				<div class="input-field col s6">
+				<input id="quantity" type="text" name="quantity" class="validate">
+				<label for="quantity">Quantity</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+				<input id="item_description" name="item_desc" type="text" class="validate">
+				<label for="item_description">Item Description</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+				<input id="location" name="location" type="text" class="validate">
+				<label for="location">Location</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+				<input id="location_description" name="location_desc" type="text" class="validate">
+				<label for="location_description">Location Description</label>
+				</div>
+			</div>
+			<div>
+				<button class="btn waves-effect waves-light" type="submit">Submit
+					<i class="material-icons right">send</i>
+				</button>
+			</div>
+		</form>
+	</div>
+</body>	
